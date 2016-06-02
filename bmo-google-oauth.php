@@ -2,7 +2,7 @@
 /*
 Plugin Name: BMO's GoogleOAuth
 Description:  Allows autologin against Google Apps OAuth service -- BMO Fixed
-Version: 1.3
+Version: 1.4
 Author: Servian Pty Ltd, BMO
 License: GPLv2 Copyright (c) 2013 Servian Pty Ltd
 */
@@ -318,7 +318,7 @@ class GoogleOAuth {
 			echo '<div style="padding:10px;background-color:#FFDFDD;border:1px solid #ced9ea;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;"><p style="line-height:1.6em;"><strong>Error!</strong> Error connecting to Google Apps. </p></div><br>';
 		}
 		else if ( isset( $_GET['google-domain-error'] ) ) {
-			$username = $_GET['google-oauth-username'];
+			$username = htmlentities($_GET['google-oauth-username']);
 			echo '<div style="padding:10px;background-color:#FFDFDD;border:1px solid #ced9ea;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;"><p style="line-height:1.6em;"><strong>Error!</strong> User ' . $username . ' is not authorised to login. </p></div><br>';
 		}
 		else if ( $autologinActive && !isset( $_GET['loggedout']) ){
