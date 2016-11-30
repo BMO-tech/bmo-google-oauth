@@ -286,7 +286,9 @@ class GoogleOAuth {
 			$domains_allowed_field = get_option('google_oauth_allowed_domains');
 
 			if (isset($domains_allowed_field) && trim($domains_allowed_field) != '') {
-				$domains_allowed = explode(",",ereg_replace(' ','',$domains_allowed_field));
+				$domains_allowed = explode( ',', $domains_allowed_field );
+				array_walk( $domains_allowed, function( &$a ){ $a = trim( $a ); } );
+				// $domains_allowed = explode(",",preg_replace('/,\s/',',',$domains_allowed_field));
 			}
 			if (is_array($domains_allowed)) {
 				foreach ($domains_allowed as $domain) {
